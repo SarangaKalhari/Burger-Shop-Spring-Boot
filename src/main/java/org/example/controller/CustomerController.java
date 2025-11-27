@@ -3,10 +3,9 @@ package org.example.controller;
 import org.example.model.DTO.CustomerDTO;
 import org.example.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CustomerController {
@@ -23,4 +22,10 @@ public class CustomerController {
     public void addCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.save(customerDTO);
     }
+
+    @GetMapping("/all")
+    public List<CustomerDTO> getAllCustomer(){
+         return customerService.getALLCustomer();
+    }
+
 }

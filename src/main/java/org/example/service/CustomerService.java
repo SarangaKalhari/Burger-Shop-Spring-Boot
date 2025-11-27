@@ -6,6 +6,9 @@ import org.example.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -28,5 +31,27 @@ public class CustomerService {
         );
 
         customerRepository.save(customer);
+    }
+
+    public List<CustomerDTO> getALLCustomer() {
+        List<Customer> customerList = customerRepository.findAll();
+
+        List<CustomerDTO> customerDTOS = new ArrayList<>();
+
+        for (Customer c1 : customerList){
+
+            customerDTOS.add(new CustomerDTO(
+                    c1.getPhone_number(),
+                    c1.getCust_title(),
+                    c1.getCust_name(),
+                    c1.getDob(),
+                    c1.getSalary(),
+                    c1.getCust_address(),
+                    c1.getCity(),
+                    c1.getProvince(),
+                    c1.getPostal_code()
+            ));
+        }
+        return customerDTOS;
     }
 }
