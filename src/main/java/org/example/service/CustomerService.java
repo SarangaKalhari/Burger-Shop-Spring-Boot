@@ -54,4 +54,24 @@ public class CustomerService {
         }
         return customerDTOS;
     }
+
+    public CustomerDTO search(long number) {
+        for (Customer customer : customerRepository.findAll()){
+            if (customer.getPhone_number()== number){
+                CustomerDTO customerDTO = new CustomerDTO(
+                        customer.getPhone_number(),
+                        customer.getCust_title(),
+                        customer.getCust_name(),
+                        customer.getDob(),
+                        customer.getSalary(),
+                        customer.getCust_address(),
+                        customer.getCity(),
+                        customer.getProvince(),
+                        customer.getPostal_code()
+                );
+                return customerDTO;
+            }
+        }
+        return null;
+    }
 }

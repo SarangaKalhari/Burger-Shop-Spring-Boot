@@ -28,4 +28,9 @@ public class CustomerController {
          return customerService.getALLCustomer();
     }
 
+    @GetMapping("/search/{number}")
+    public CustomerDTO searchCustomer(@PathVariable long number){
+        return customerService.search(number);
+    }
+
 }
