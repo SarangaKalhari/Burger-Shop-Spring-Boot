@@ -74,4 +74,10 @@ public class CustomerService {
         }
         return null;
     }
+
+    public void delete(long number) {
+        customerRepository.deleteById(number);
+
+    }
 }
+

@@ -33,4 +33,9 @@ public class CustomerController {
         return customerService.search(number);
     }
 
+    @DeleteMapping("/delete/{number}")
+    public void deleteCustomer(@PathVariable long number){
+        customerService.delete(number);
+    }
+
 }
