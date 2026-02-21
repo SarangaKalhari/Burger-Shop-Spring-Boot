@@ -20,4 +20,15 @@ public class BurgerService {
         burgerRepository.save(burger);
     }
 
+    public void updateBurger(BurgerDTO burgerDTO){
+        Burger burger = burgerRepository.findByCode(burgerDTO.getCode());
+
+        burger.setCode(burgerDTO.getCode());
+        burger.setName(burgerDTO.getName());
+        burger.setType(burgerDTO.getType());
+        burger.setPrice(burgerDTO.getPrice());
+
+        burgerRepository.save(burger);
+    }
+
 }

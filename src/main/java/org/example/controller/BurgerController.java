@@ -3,10 +3,7 @@ package org.example.controller;
 import org.example.model.DTO.BurgerDTO;
 import org.example.service.BurgerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("burger")
@@ -20,9 +17,15 @@ public class BurgerController {
         return "Burger Page..";
     }
 
-    @GetMapping("/add")
+    @PutMapping("/add")
     public String addBurger(@RequestBody BurgerDTO burgerDTO){
         burgerService.addBurger(burgerDTO);
         return "Added Successfully..!! ";
+    }
+
+    @PostMapping("/update")
+    public String updateBurger(@RequestBody BurgerDTO burgerDTO){
+        burgerService.updateBurger(burgerDTO);
+        return "Updated Success..";
     }
 }

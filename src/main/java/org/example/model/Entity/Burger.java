@@ -16,7 +16,10 @@ public class Burger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(unique = true)
     private String code;
+
     private String name;
     private String type;
     private double price;
