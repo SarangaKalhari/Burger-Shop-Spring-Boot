@@ -31,4 +31,8 @@ public class BurgerService {
         burgerRepository.save(burger);
     }
 
+    public void deleteBurger(long id){
+        burgerRepository.deleteById(id);
+    }
+
 }

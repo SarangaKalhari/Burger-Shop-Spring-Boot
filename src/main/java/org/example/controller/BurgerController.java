@@ -28,4 +28,11 @@ public class BurgerController {
         burgerService.updateBurger(burgerDTO);
         return "Updated Success..";
     }
+
+    @DeleteMapping("/delete")
+    public String deleteBurger(@RequestBody long id){
+        burgerService.deleteBurger(id);
+        return "Delete Success..";
+    }
+
 }
