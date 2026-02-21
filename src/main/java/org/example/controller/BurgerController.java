@@ -37,9 +37,14 @@ public class BurgerController {
         return "Delete Success..";
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<BurgerDTO> getAll(){
         return burgerService.getAllBurgers();
+    }
+
+    @GetMapping("/search/{code}")
+    public BurgerDTO getBurger(@PathVariable String code){
+        return burgerService.searchBurger(code);
     }
 
 }

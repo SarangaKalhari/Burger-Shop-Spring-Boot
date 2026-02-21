@@ -45,4 +45,9 @@ public class BurgerService {
                 .toList();
     }
 
+    public BurgerDTO searchBurger(String code) {
+        Burger burger = burgerRepository.findByCode(code);
+        BurgerDTO burgerDTO = modelMapper.map(burger, BurgerDTO.class);
+        return burgerDTO;
+    }
 }
