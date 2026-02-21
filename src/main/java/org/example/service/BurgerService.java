@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BurgerService {
 
@@ -33,6 +35,14 @@ public class BurgerService {
 
     public void deleteBurger(long id){
         burgerRepository.deleteById(id);
+    }
+
+    public List<BurgerDTO> getAllBurgers() {
+        List<Burger> burgers = burgerRepository.findAll();
+
+        return burgers.stream()
+                .map(burger -> modelMapper.map(burger, BurgerDTO.class))
+                .toList();
     }
 
 }

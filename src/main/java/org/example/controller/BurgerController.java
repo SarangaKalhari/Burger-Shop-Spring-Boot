@@ -5,6 +5,8 @@ import org.example.service.BurgerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("burger")
 public class BurgerController {
@@ -33,6 +35,11 @@ public class BurgerController {
     public String deleteBurger(@RequestBody long id){
         burgerService.deleteBurger(id);
         return "Delete Success..";
+    }
+
+    @GetMapping
+    public List<BurgerDTO> getAll(){
+        return burgerService.getAllBurgers();
     }
 
 }
