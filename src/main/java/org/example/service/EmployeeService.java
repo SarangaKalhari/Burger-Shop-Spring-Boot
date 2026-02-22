@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
 
@@ -41,5 +43,14 @@ public class EmployeeService {
         employee.setSalary(employeeDTO.getSalary());
 
         employeeRepository.save(employee);
+    }
+
+    public List<EmployeeDTO> getAllEmployee() {
+
+        List<Employee> employees = employeeRepository.findAll();
+
+        return employees.stream()
+                .map(employee -> modelMapper.map(employee, EmployeeDTO.class))
+                .toList();
     }
 }

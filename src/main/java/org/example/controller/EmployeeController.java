@@ -1,11 +1,11 @@
 package org.example.controller;
 
-import org.example.model.DTO.BurgerDTO;
-import org.example.model.DTO.CustomerDTO;
 import org.example.model.DTO.EmployeeDTO;
 import org.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("employee")
@@ -41,4 +41,10 @@ public class EmployeeController {
         employeeService.updateEmployee(employeeDTO, nic);
         return "Updated Success..";
     }
+
+    @GetMapping("/all")
+    public List<EmployeeDTO> getAll(){
+        return employeeService.getAllEmployee();
+    }
+
 }
