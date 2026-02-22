@@ -19,4 +19,27 @@ public class EmployeeService {
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
         employeeRepository.save(employee);
     }
+
+    public EmployeeDTO search(String nic) {
+        Employee employee = employeeRepository.findAllByNic(nic);
+        return modelMapper.map(employee, EmployeeDTO.class);
+    }
+
+    public void delete(long phoneNumber) {
+        employeeRepository.deleteByPhoneNumber(phoneNumber);
+    }
+
+    public void updateEmployee(EmployeeDTO employeeDTO, String nic) {
+        Employee employee = employeeRepository.findAllByNic(nic);
+
+        employee.setPhoneNumber(employeeDTO.getPhoneNumber());
+        employee.setName(employeeDTO.getName());
+        employee.setAddress(employeeDTO.getAddress());
+        employee.setCity(employeeDTO.getCity());
+        employee.setProvince(employeeDTO.getProvince());
+        employee.setPostalCode(employeeDTO.getPostalCode());
+        employee.setSalary(employeeDTO.getSalary());
+
+        employeeRepository.save(employee);
+    }
 }

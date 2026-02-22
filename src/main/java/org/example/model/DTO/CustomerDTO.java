@@ -16,7 +16,6 @@ public class CustomerDTO {
     private String custTitle;
     private String custName;
     private LocalDate dob;
-    private BigDecimal salary;
     private String custAddress;
     private String city;
     private String province;

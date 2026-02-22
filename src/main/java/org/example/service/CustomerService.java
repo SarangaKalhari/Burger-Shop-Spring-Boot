@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.model.DTO.CustomerDTO;
 import org.example.model.Entity.Customer;
 import org.example.repository.CustomerRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,23 +13,14 @@ import java.util.List;
 @Service
 public class CustomerService {
 
+    ModelMapper modelMapper = new ModelMapper();
+
     @Autowired
     CustomerRepository customerRepository;
 
     public void save(CustomerDTO customerDTO) {
 
-        Customer customer = new Customer(
-                1L,
-                customerDTO.getPhoneNumber(),
-                customerDTO.getCustTitle(),
-                customerDTO.getCustName(),
-                customerDTO.getDob(),
-                customerDTO.getSalary(),
-                customerDTO.getCustAddress(),
-                customerDTO.getCity(),
-                customerDTO.getProvince(),
-                customerDTO.getPostalCode()
-        );
+        Customer customer = modelMapper.map(customerDTO, Customer.class);
 
         customerRepository.save(customer);
     }
@@ -45,7 +37,6 @@ public class CustomerService {
                     c1.getCust_title(),
                     c1.getCust_name(),
                     c1.getDob(),
-                    c1.getSalary(),
                     c1.getCust_address(),
                     c1.getCity(),
                     c1.getProvince(),
@@ -63,7 +54,6 @@ public class CustomerService {
                         customer.getCust_title(),
                         customer.getCust_name(),
                         customer.getDob(),
-                        customer.getSalary(),
                         customer.getCust_address(),
                         customer.getCity(),
                         customer.getProvince(),

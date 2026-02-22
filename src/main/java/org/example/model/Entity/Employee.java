@@ -1,8 +1,15 @@
 package org.example.model.Entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 
 @Entity
 @Table(name = "employee")
