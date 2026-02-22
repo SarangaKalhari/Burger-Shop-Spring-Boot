@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -28,7 +29,7 @@ public class BurgerService {
         burger.setCode(burgerDTO.getCode());
         burger.setName(burgerDTO.getName());
         burger.setType(burgerDTO.getType());
-        burger.setPrice(burgerDTO.getPrice());
+        burger.setPrice(BigDecimal.valueOf(burgerDTO.getPrice()));
 
         burgerRepository.save(burger);
     }

@@ -3,6 +3,8 @@ package org.example.model.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,6 +24,8 @@ public class Burger {
 
     private String name;
     private String type;
-    private double price;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
 
 }
